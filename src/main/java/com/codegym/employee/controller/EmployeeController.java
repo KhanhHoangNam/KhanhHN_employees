@@ -76,4 +76,23 @@ public class EmployeeController {
             return modelAndView;
         }
     }
+
+    @GetMapping("/delete-employee/{id}")
+    public ModelAndView showDeleteForm(@PathVariable Long id) {
+        Employee employee = employeeService.findById(id);
+        if (employee != null) {
+            ModelAndView modelAndView = new ModelAndView("views/delete");
+            modelAndView.addObject("employee", employee);
+            return modelAndView;
+        } else {
+            ModelAndView modelAndView = new ModelAndView("error.404");
+            return modelAndView;
+        }
+    }
+
+    @PostMapping("/delete-employee")
+    public String deleteEmployee(@ModelAttribute("employee") Employee employee) {
+        employeeService.remove(employee.getId());
+        return "redirect:employees";
+    }
 }

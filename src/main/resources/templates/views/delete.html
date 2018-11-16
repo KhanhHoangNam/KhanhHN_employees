@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a new employee</title>
+</head>
+<body>
+<h1>Delete employee</h1>
+<!--<a href="/employees">Back to list</a>-->
+<!--<th:block th:if="${message}">-->
+    <!--<p th:text="${message}">-->
+    <!--</p>-->
+<!--</th:block>-->
+
+<form th:action="@{/delete-employee}" th:object="${employee}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <!--<tr>-->
+            <!--<td>Ma nhan vien:</td>-->
+            <!--<td th:text="*{id}"></td>-->
+        <!--</tr>-->
+
+        <tr>
+            <td>Ho ten:</td>
+            <td th:text="*{fullName}"></td>
+        </tr>
+
+        <tr>
+            <td>Nhom nhan vien:</td>
+            <td th:text="*{group_employee}"></td>
+        </tr>
+
+        <tr>
+            <td>So dien thoai:</td>
+            <td th:text="*{phone_number}"></td>
+        </tr>
+
+        <tr>
+            <td>Email:</td>
+            <td th:text="*{email}"></td>
+        </tr>
+
+        <tr>
+            <td>Gioi tinh:</td>
+            <td th:text="*{sex}"></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Delete"/></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
