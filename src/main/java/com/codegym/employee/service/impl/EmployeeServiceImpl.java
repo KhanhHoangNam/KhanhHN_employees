@@ -35,6 +35,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Page<Employee> findAllByFullNameContaining(String fullName, Pageable pageable) {
-        return null;
+        return employeeRepository.findAllByFullNameContaining(fullName, pageable);
     }
 }

@@ -32,8 +32,8 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String fullname, String group_employee, String email,@Size(min = 9, max = 10) String phone_number, int identity_employee, String sex) {
-        this.fullName = fullname;
+    public Employee(String fullName, String group_employee, String email,@Size(min = 9, max = 10) String phone_number, int identity_employee, String sex) {
+        this.fullName = fullName;
         this.group_employee = group_employee;
         this.email = email;
         this.phone_number = phone_number;
