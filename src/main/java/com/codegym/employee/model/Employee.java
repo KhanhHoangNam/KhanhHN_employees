@@ -9,7 +9,7 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.AUTO)
 
     private int id;
-    private String fullname;
+    private String fullName;
     private String group_employee;
     private String email;
     private int phone_number;
@@ -20,7 +20,7 @@ public class Employee {
     }
 
     public Employee(String fullname, String group_employee, String email, int phone_number, int identity_employee, String sex) {
-        this.fullname = fullname;
+        this.fullName = fullname;
         this.group_employee = group_employee;
         this.email = email;
         this.phone_number = phone_number;
@@ -36,12 +36,12 @@ public class Employee {
         this.id = id;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getGroup_employee() {
