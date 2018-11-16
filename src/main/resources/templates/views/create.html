@@ -5,6 +5,50 @@
     <title>Create a new employee</title>
 </head>
 <body>
-    Hello
+    <h1>Create a new employee</h1>
+    <a href="/employees"></a>
+    <th:block th:if="${message}">
+        <p th:text="${message}">
+        </p>
+    </th:block>
+
+    <form th:action="@{/create-employee}" th:object="${employee}" method="post">
+        <table>
+            <tr>
+                <td>Ma nhan vien:</td>
+                <td><input type="text" th:field="*{id}"></td>
+            </tr>
+
+            <tr>
+                <td>Ho ten:</td>
+                <td><input type="text" th:field="*{fullName}"></td>
+            </tr>
+
+            <tr>
+                <td>Nhom nhan vien:</td>
+                <td><input type="text" th:field="*{group_employee}"></td>
+            </tr>
+
+            <tr>
+                <td>So dien thoai:</td>
+                <td><input type="text" th:field="*{phone_number}"></td>
+            </tr>
+
+            <tr>
+                <td>Email:</td>
+                <td><input type="text" th:field="*{email}"></td>
+            </tr>
+
+            <tr>
+                <td>Gioi tinh:</td>
+                <td><input type="text" th:field="*{sex}"></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Create"/></td>
+            </tr>
+        </table>
+    </form>
 </body>
 </html>
