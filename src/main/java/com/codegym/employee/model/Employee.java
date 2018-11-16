@@ -1,25 +1,38 @@
 package com.codegym.employee.model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "employees")
+@Component
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
-    private int id;
+    private Long id;
     private String fullName;
     private String group_employee;
+
+    @Email(message = "Email not valid")
+    @NotBlank(message = "Email not blank")
     private String email;
-    private int phone_number;
+
+    @NotEmpty
+    @Size(min = 9, max = 10)
+    private String phone_number;
     private int identity_employee;
     private String sex;
 
     public Employee() {
     }
 
-    public Employee(String fullname, String group_employee, String email, int phone_number, int identity_employee, String sex) {
+    public Employee(String fullname, String group_employee, String email,@Size(min = 9, max = 10) String phone_number, int identity_employee, String sex) {
         this.fullName = fullname;
         this.group_employee = group_employee;
         this.email = email;
@@ -28,11 +41,11 @@ public class Employee {
         this.sex = sex;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -60,11 +73,11 @@ public class Employee {
         this.email = email;
     }
 
-    public int getPhone_number() {
+    public String getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(int phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 

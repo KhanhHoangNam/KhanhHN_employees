@@ -19,7 +19,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee findById(int id) {
+    public Employee findById(Long id) {
         return employeeRepository.findById(id).orElse(null);
     }
 
@@ -29,12 +29,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void remove(int id) {
+    public void remove(Long id) {
         employeeRepository.deleteById(id);
     }
 
     @Override
-    public Page<Employee> findAllByFullNameContaining(String fullname, Pageable pageable) {
+    public Page<Employee> findAllByFullNameContaining(String fullName, Pageable pageable) {
         return null;
     }
 }
