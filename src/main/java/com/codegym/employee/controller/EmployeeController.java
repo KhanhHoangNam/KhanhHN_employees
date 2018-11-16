@@ -7,10 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -50,6 +47,32 @@ public class EmployeeController {
             employeeService.save(employee);
             modelAndView.addObject("employee", employee);
             modelAndView.addObject("message", "A new employee was created");
+            return modelAndView;
+        }
+    }
+
+    @GetMapping("/edit-employee/{id}")
+    public ModelAndView showEditForm(@PathVariable Long id) {
+        Employee employee = employeeService.findById(id);
+        if(employee != null) {
+            ModelAndView modelAndView = new ModelAndView("views/edit");
+            modelAndView.addObject("employee", employee);
+            return modelAndView;
+        } else {
+            ModelAndView modelAndView = new ModelAndView("error.404");
+            return modelAndView;
+        }
+    }
+
+    @PostMapping("/edit-employee")
+    public ModelAndView editEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult bindingResult) {
+        ModelAndView modelAndView = new ModelAndView("views/edit");
+        if(bindingResult.hasFieldErrors()) {
+            return modelAndView;
+        } else {
+            employeeService.save(employee);
+            modelAndView.addObject("employee", employee);
+            modelAndView.addObject("message", "a new employee was updated!");
             return modelAndView;
         }
     }
